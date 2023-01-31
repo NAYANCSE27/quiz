@@ -20,8 +20,39 @@ body{
     border-radius: 10px;
     box-shadow: 0 0 10px 5px rgba(0, 0, 0, .2);
     width: 40%;
+    max-width: 100%;
 }
 
 .quiz__header{
-    padding: 2rem;
+    padding: 3rem;
+}
+
+h2{
+    margin: 0;
+}
+
+ul{
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li{
+    font-size: 1.1rem;
+    margin: 1rem 0;
+}
+
+button{
+    background-color: #8e44ad;
+    border: none;
+    color: white;
+    display: block;
+    font-family: inherit;
+    font-size: 1.5rem;
+    width: 100%;
+    padding: 1.2rem;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: #732d97;
 }

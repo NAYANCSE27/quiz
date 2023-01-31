@@ -22,3 +22,27 @@ const quizData = [
         corrcet: 'c'
     }
 ];
+
+
+let currentQuestion = 0;
+
+const question__element = document.getElementById("question");
+const a__text = document.getElementById("a__text");
+const b__text = document.getElementById("b__text");
+const c__text = document.getElementById("c__text");
+const d__text = document.getElementById("d__text");
+const submitBtn = document.getElementById('submit');
+
+loadQuiz();
+
+function loadQuiz(){
+    const currentQuizData = quizData[currentQuestion];
+    question__element.innerHTML =currentQuizData.question;
+
+    a__text.innerText = currentQuizData.a;
+    b__text.innerText = currentQuizData.b;
+    c__text.innerText = currentQuizData.c;
+    d__text.innerText = currentQuizData.d;
+
+    currentQuestion++;
+}
