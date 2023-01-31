@@ -6,14 +6,14 @@ const quizData = [
         c: '16th December',
         d: '1st June',
         corrcet: 'b'
-    },{
+    }, {
         question: 'What does WWW means?',
         a: 'World Wide Web',
         b: 'World Web Wide',
         b: 'Web Wide World',
         b: 'Web World Wide',
         corrcet: 'a'
-    },{
+    }, {
         question: 'Which one is not a programming language?',
         a: 'Java',
         b: 'C++',
@@ -35,14 +35,29 @@ const submitBtn = document.getElementById('submit');
 
 loadQuiz();
 
-function loadQuiz(){
+function loadQuiz() {
     const currentQuizData = quizData[currentQuestion];
-    question__element.innerHTML =currentQuizData.question;
+    question__element.innerHTML = currentQuizData.question;
 
     a__text.innerText = currentQuizData.a;
     b__text.innerText = currentQuizData.b;
     c__text.innerText = currentQuizData.c;
     d__text.innerText = currentQuizData.d;
-
-    currentQuestion++;
 }
+
+function getSelected(){
+    const answers = document.querySelectorAll("answer");
+    answers.forEach((answer) => {
+        console.log(answer.value);
+    });
+}
+
+submitBtn.addEventListener("click", () => {
+    currentQuestion++;
+
+    if (currentQuestion < quizData.length) {
+        loadQuiz();
+    } else {
+        alert("You have finished..");
+    } 
+});
