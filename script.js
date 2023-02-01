@@ -10,8 +10,8 @@ const quizData = [
         question: 'What does WWW means?',
         a: 'World Wide Web',
         b: 'World Web Wide',
-        b: 'Web Wide World',
-        b: 'Web World Wide',
+        c: 'Web Wide World',
+        d: 'Web World Wide',
         corrcet: 'a'
     }, {
         question: 'Which one is not a programming language?',
@@ -25,6 +25,8 @@ const quizData = [
 
 
 let currentQuestion = 0;
+let score = 0;
+
 
 const question__element = document.getElementById("question");
 const a__text = document.getElementById("a__text");
@@ -32,10 +34,13 @@ const b__text = document.getElementById("b__text");
 const c__text = document.getElementById("c__text");
 const d__text = document.getElementById("d__text");
 const submitBtn = document.getElementById('submit');
+const result = document.getElementById("result");
 
 loadQuiz();
 
 function loadQuiz() {
+    deselectAnswers();
+
     const currentQuizData = quizData[currentQuestion];
     question__element.innerHTML = currentQuizData.question;
 
@@ -46,18 +51,43 @@ function loadQuiz() {
 }
 
 function getSelected(){
-    const answers = document.querySelectorAll("answer");
-    answers.forEach((answer) => {
-        console.log(answer.value);
+    const answerEls = document.querySelectorAll(".answer");
+    
+    let answer = undefined;
+    
+    answerEls.forEach((answerEl) => {
+        if(answerEl.checked){
+             answer = answerEl.id;
+        }
+    }); 
+
+    return answer;
+}
+
+function deselectAnswers(){
+    const answerEls = document.querySelectorAll(".answer");
+
+    answerEls.forEach((answerEl) => {
+        answerEl.checked = false;
     });
 }
 
 submitBtn.addEventListener("click", () => {
-    currentQuestion++;
+    const answer = getSelected();
 
-    if (currentQuestion < quizData.length) {
-        loadQuiz();
-    } else {
-        alert("You have finished..");
-    } 
+    if(answer){
+        if(answer === quizData[currentQuestion].corrcet){
+            score++;
+        }
+
+        currentQuestion++;
+        if (currentQuestion < quizData.length) {
+            loadQuiz();
+        } else {
+            alert("You have finished..");
+        } 
+
+        result.innerHTML = `<h2>You answerd correctly ${score}/
+        ${currentQuestion} questions.</h2>`
+    }
 });
