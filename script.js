@@ -20,6 +20,27 @@ const quizData = [
         c: 'HTML',
         d: 'Python',
         corrcet: 'c'
+    }, {
+        question: 'Independent day of Bangladesh?',
+        a: '1st April',
+        b: '26th March',
+        c: '16th December',
+        d: '1st June',
+        corrcet: 'b'
+    }, {
+        question: 'What does WWW means?',
+        a: 'World Wide Web',
+        b: 'World Web Wide',
+        c: 'Web Wide World',
+        d: 'Web World Wide',
+        corrcet: 'a'
+    }, {
+        question: 'Which one is not a programming language?',
+        a: 'Java',
+        b: 'C++',
+        c: 'HTML',
+        d: 'Python',
+        corrcet: 'c'
     }
 ];
 
@@ -84,7 +105,7 @@ submitBtn.addEventListener("click", () => {
         if (currentQuestion < quizData.length) {
             loadQuiz();
         } else {
-            alert("You have finished..");
+            alert("You got "+score);
         } 
 
         result.innerHTML = `<h2>You answerd correctly ${score}/
